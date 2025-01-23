@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORAI - 永恒技术开发公司</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #242424;
+            --background-color: #f5f7f9;
+            --text-color: #333333;
+            --sidebar-width: 300px;
+            --sidebar-bg: #f5f7f9;
+            --link-color: #0969da;
+            --border-color: #e6ecf1;
+            --heading-color: #242424;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            line-height: 1.6;
+            font-size: 16px;
+            color: var(--text-color);
+        }
+        
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+            padding: 0 1.5rem;
+        }
+        
+        .nav-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .nav-item h3 {
+            color: var(--heading-color);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            padding-left: 0.5rem;
+        }
+        
+        .nav-subitem {
+            list-style: none;
+            padding-left: 0.5rem;
+        }
+        
+        .nav-subitem li {
+            margin: 0.25rem 0;
+        }
+        
+        .nav-subitem a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-subitem a:hover {
+            color: var(--link-color);
+            background: rgba(9, 105, 218, 0.05);
+        }
+        
+        .nav-subitem a i {
+            font-size: 0.875rem;
+            color: inherit;
+            opacity: 0.8;
+        }
+        
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 2rem 3rem;
+            flex: 1;
+            background: white;
+            max-width: 850px;
+        }
+        
+        .content-section {
+            background: white;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        h1 {
+            color: var(--heading-color);
+            font-size: 2rem;
+            margin: 0 0 2rem;
+            font-weight: 600;
+        }
+        
+        h2 {
+            color: var(--heading-color);
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .code-block {
+            background: #f6f8fa;
+            color: #24292f;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+            font-size: 0.875rem;
+            line-height: 1.45;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+        
+        ul, ol {
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            margin: 0.5rem 0;
+        }
+        
+        .note {
+            background: #f6f8fa;
+            border-left: 4px solid var(--link-color);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        code {
+            background: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 0.875em;
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1rem 0;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+                max-width: 100%;
+            }
+        }
+
+        .nav-sub-subitem {
+            padding-left: 1.5rem;
+            margin-top: 0.25rem;
+        }
+        
+        .nav-sub-subitem li {
+            margin: 0.125rem 0;
+        }
+        
+        .nav-sub-subitem a {
+            font-size: 0.8125rem;
+            padding: 0.25rem 0.5rem;
+        }
+
+        /* 新增下拉菜单样式 */
+        .nav-subitem {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .nav-item.active .nav-subitem {
+            max-height: 500px; /* 根据实际内容调整 */
+        }
+
+        .nav-item h3 {
+            cursor: pointer;
+            position: relative;
+            padding-right: 30px;
+        }
+
+        .nav-item h3::after {
+            content: "\f078";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item.active h3::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <nav class="sidebar">
+        <ul class="sidebar-nav">
+            <li class="nav-item">
+                <h3>FORAI</h3>
+                <ul class="nav-subitem">
+                    <li><a href="#overview"><i class="fas fa-info-circle"></i>概述</a></li>
+                    <li>
+                        <a href="#architecture"><i class="fas fa-sitemap"></i>架构概览</a>
+                        <ul class="nav-sub-subitem">
+                            <li><a href="#core-architecture">核心架构</a></li>
+                            <li><a href="#communication-protocol">通信协议</a></li>
+                            <li><a href="#data-flow">数据流</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#tech-stack"><i class="fas fa-layer-group"></i>技术栈</a>
+                        <ul class="nav-sub-subitem">
+                            <li><a href="#llm-integration">大语言模型集成</a></li>
+                            <li><a href="#multi-agent-system">多智能体系统</a></li>
+                            <li><a href="#distributed-computing">分布式计算</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#features"><i class="fas fa-star"></i>核心特性</a>
+                        <ul class="nav-sub-subitem">
+                            <li><a href="#collaboration">智能协作</a></li>
+                            <li><a href="#evolution">智能体进化</a></li>
+                            <li><a href="#management">虚拟公司管理</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <h3>愿景</h3>
+                <ul class="nav-subitem">
+                    <li><a href="#vision"><i class="fas fa-bullseye"></i>发展愿景</a></li>
+                    <li>
+                        <a href="#philosophy"><i class="fas fa-brain"></i>核心理念</a>
+                        <ul class="nav-sub-subitem">
+                            <li><a href="#ai-ethics">AI 伦理</a></li>
+                            <li><a href="#sustainability">可持续发展</a></li>
+                            <li><a href="#open-source">开源理念</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#roadmap"><i class="fas fa-map-signs"></i>发展路线图</a>
+                        <ul class="nav-sub-subitem">
+                            <li><a href="#short-term">短期计划</a></li>
+                            <li><a href="#mid-term">中期规划</a></li>
+                            <li><a href="#long-term">长期愿景</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <h3>社区</h3>
+                <ul class="nav-subitem">
+                    <li><a href="#community"><i class="fas fa-users"></i>加入社区</a></li>
+                    <li>
+                        <a href="#contribution"><i class="fas fa-code-branch"></i>贡献指南</a>
+                        <ul class="nav-sub-subitem">
+                            <li><a href="#code-contribution">代码贡献</a></li>
+                            <li><a href="#documentation">文档贡献</a></li>
+                            <li><a href="#bug-report">问题报告</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#resources"><i class="fas fa-book"></i>学习资源</a>
+                        <ul class="nav-sub-subitem">
+                            <li><a href="#tutorials">教程</a></li>
+                            <li><a href="#api-docs">API 文档</a></li>
+                            <li><a href="#case-studies">案例研究</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#events"><i class="fas fa-calendar-alt"></i>社区活动</a>
+                        <ul class="nav-sub-subitem">
+                            <li><a href="#hackathons">黑客马拉松</a></li>
+                            <li><a href="#meetups">线下聚会</a></li>
+                            <li><a href="#webinars">在线研讨会</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <div class="content-section">
+            <h1>欢迎来到FORAI：Meme世界的永恒技术开发公司 </h1>
+            <p class="lead"><b>未来已来，代码永存！</b></p>
+            <div class="intro-content">
+                <p>FORAI（<b>F</b>orever <b>O</b>perational <b>R</b>esearch <b>A</b>rtificial <b>I</b>ntelligence）是一家存在于meme世界的永恒技术开发公司。</p>
+                <p class="highlight">你是否曾经想过，如果技术开发公司存在于Meme世界，会是什么样子？现在，这个想象变成了现实！欢迎来到FORAI——一个充满创意、幽默和无限可能的虚拟技术开发公司。我们不仅是一家公司，更是一个由智能体组成的Meme宇宙，致力于通过编程改变数字世界，同时带给你无尽的欢乐和惊喜。</p>
+            </div>
+        <div class="intro-content">
+            <h2>🤖 我们是谁？</h2>
+            <p>FORAI由一群超级智能体组成，它们不是普通的程序员，而是来自未来的AI战士。每个智能体都有独特的技能和个性，它们通过协作和脑洞大开的对话，创造出令人惊叹的软件。我们的团队包括：</p>
+            <ul class="team-list">
+                <li><b>执行官</b>🎩：未来预言家，负责制定公司的大方向（顺便预测一下明天的天气）</li>
+                <li><b>产品官</b>📦：产品魔法师，负责把疯狂的想法变成现实</li>
+                <li><b>技术官</b>💻：技术巫师，负责把代码变成魔法</li>
+                <li><b>程序员</b>👨‍💻：代码战士，负责把键盘敲出火花</li>
+                <li><b>审查员</b>🔍：代码侦探，负责找出代码中的漏洞</li>
+                <li><b>测试员</b>🧪：软件医生，负责给软件做体检</li>
+                <li><b>设计师</b>🎨：视觉艺术家，负责把软件打扮得漂漂亮亮</li>
+            </ul>
+            <p>这些智能体通过协作，参加各种功能研讨会，从设计、编码到测试和文档编写，无所不能。我们的使命是：<b>“通过编程改变数字世界，同时让Meme文化无处不在！”</b></p>
+        </div>
+        <div class="intro-content">
+            <h2>🚀 我们能做什么？</h2>
+            <p>在FORAI，我们不仅仅是写代码，我们是<b>创造未来</b>！无论你是想要一个<b>2048游戏</b>，还是一个<b>能预测股市的AI</b>，甚至是一个<b>能帮你找到丢失的袜子的APP</b>，我们都能搞定！我们的智能体们通过<b>协作</b>和<b>脑洞大开</b>的对话，把你的想法变成现实。</p>
+            <div class="highlight-box">
+                <p>我们相信：<b>没有疯狂的想法，只有不够疯狂的代码！</b></p>
+            </div>
+        </div>
+        </div>
+
+        <div id="installation" class="content-section">
+            <h2>安装说明</h2>
+            <p>通过以下步骤快速安装 FORAI：</p>
+            <div class="code-block">
+# 使用 pip 安装
+pip install chatdev
+
+# 或者从源码安装
+git clone https://github.com/chatdev/chatdev.git
+cd chatdev
+pip install -r requirements.txt
+            </div>
+        </div>
+
+        <div id="quick-start" class="content-section">
+            <h2>快速入门</h2>
+            <p>启动你的第一个 FORAI 项目：</p>
+            <div class="code-block">
+# 初始化项目
+chatdev init my_project
+
+# 启动开发环境
+chatdev start
+            </div>
+        </div>
+
+        <div id="collaboration-system" class="content-section">
+            <h2>智能体协作系统</h2>
+            <p>FORAI 的智能体协作系统包含以下特性：</p>
+            <ul>
+                <li>多角色协同开发</li>
+                <li>实时通信与任务分配</li>
+                <li>知识共享与经验传承</li>
+                <li>自动化代码审查</li>
+            </ul>
+        </div>
+
+        <div id="development-process" class="content-section">
+            <h2>开发流程模拟</h2>
+            <p>FORAI 模拟完整的软件开发流程：</p>
+            <ol>
+                <li>需求分析与规划</li>
+                <li>系统设计与架构</li>
+                <li>代码实现与优化</li>
+                <li>测试与质量保证</li>
+                <li>部署与维护</li>
+            </ol>
+        </div>
+
+        <div id="evolution-system" class="content-section">
+            <h2>智能体进化系统</h2>
+            <p>智能体通过以下方式持续进化：</p>
+            <div class="code-block">
+{
+    "learning_rate": 0.01,
+    "memory_size": 1000,
+    "skill_tree": ["coding", "testing", "design"]
+}
+            </div>
+        </div>
+
+        <div id="company-management" class="content-section">
+            <h2>虚拟公司管理</h2>
+            <p>模拟真实软件开发公司的组织结构：</p>
+            <ul>
+                <li>角色职责分配</li>
+                <li>绩效考核机制</li>
+                <li>项目管理流程</li>
+                <li>团队文化建设</li>
+            </ul>
+        </div>
+
+        <div id="infrastructure" class="content-section">
+            <h2>基础架构</h2>
+            <p>FORAI 的技术基础架构：</p>
+            <div class="code-block">
+# 架构概览
+- 大语言模型集成
+- 多智能体通信协议
+- 分布式任务调度
+- 自动化部署系统
+            </div>
+        </div>
+
+        <div id="core-components" class="content-section">
+            <h2>核心组件</h2>
+            <p>FORAI 的核心功能组件：</p>
+            <ul>
+                <li>代码生成器</li>
+                <li>测试自动化工具</li>
+                <li>版本控制系统</li>
+                <li>持续集成管道</li>
+            </ul>
+        </div>
+
+        <div id="extensions" class="content-section">
+            <h2>扩展模块</h2>
+            <p>FORAI 支持以下扩展功能：</p>
+            <div class="code-block">
+# 插件系统
+- 自定义工具集成
+- 第三方API接入
+- 数据可视化
+- 性能监控
+            </div>
+        </div>
+
+        <div id="vision" class="content-section">
+            <h2>发展愿景</h2>
+            <p>FORAI 的未来发展方向：</p>
+            <ul>
+                <li>打造智能软件开发新范式</li>
+                <li>推动AI在软件工程领域的应用</li>
+                <li>构建可持续发展的虚拟开发环境</li>
+            </ul>
+        </div>
+
+        <div id="community" class="content-section">
+            <h2>加入社区</h2>
+            <p>参与 FORAI 社区建设：</p>
+            <div class="code-block">
+# 贡献指南
+- 提交issue
+- 提交PR
+- 参与讨论
+- 分享案例
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 添加导航交互功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+
+            navItems.forEach(item => {
+                const header = item.querySelector('h3');
+                header.addEventListener('click', function() {
+                    item.classList.toggle('active');
+                });
+            });
+
+            // 根据当前URL激活对应菜单项
+            const currentHash = window.location.hash;
+            if (currentHash) {
+                const targetItem = document.querySelector(`a[href="${currentHash}"]`);
+                if (targetItem) {
+                    let parent = targetItem;
+                    while (parent && !parent.classList.contains('nav-item')) {
+                        parent = parent.parentElement;
+                        if (parent.classList.contains('nav-subitem')) {
+                            parent.style.maxHeight = 'none';
+                        }
+                        if (parent.classList.contains('nav-item')) {
+                            parent.classList.add('active');
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

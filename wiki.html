@@ -1,0 +1,685 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <style>
+    /* 基础样式 */
+    body {
+        max-width: 1024px;
+        margin: auto;
+        padding: 2rem;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f8f9fa;
+        position: relative; /* 为浮动导航提供定位上下文 */
+    }
+    
+    /* 标题样式 */
+    h1, h2, h3 {
+        color: #2c3e50;
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+    }
+    
+    h1 {
+        font-size: 2.2em;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 0.3em;
+    }
+    
+    h2 {
+        font-size: 1.8em;
+    }
+    
+    h3 {
+        font-size: 1.4em;
+    }
+    
+    /* 图片样式 */
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 1.5rem auto;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* 代码块样式 */
+    pre {
+        max-width: 100%;
+        overflow: auto;
+        white-space: pre-wrap;
+        background: #2d2d2d;
+        padding: 1.2rem;
+        border-radius: 8px;
+        color: #f8f8f2;
+        font-size: 0.95em;
+        line-height: 1.5;
+    }
+    
+    /* 链接样式 */
+    a {
+        color: #3498db;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        color: #2980b9;
+        text-decoration: underline;
+    }
+    
+    /* 列表样式 */
+    ul {
+        padding-left: 1.5em;
+        line-height: 1.8;
+    }
+    
+    li {
+        margin-bottom: 0.5em;
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 1024px) {
+        body { 
+            max-width: 90%;
+            padding: 1rem; 
+        }
+        h1 { font-size: 1.8em; }
+        h2 { font-size: 1.5em; }
+        h3 { font-size: 1.2em; }
+    }
+    
+    /* 浮动导航栏样式 */
+    nav {
+        position: fixed;
+        left: calc((100vw - 1024px) / 2 - 220px); /* 根据页面宽度计算位置 */
+        top: 20px;
+        width: 200px;
+        padding: 1rem;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+    
+    nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    nav li {
+        margin-bottom: 1rem;
+    }
+    
+    nav a {
+        color: #3498db;
+        text-decoration: none;
+        display: block;
+        padding: 0.5rem;
+        border-radius: 4px;
+        transition: background 0.2s;
+    }
+    
+    nav a:hover {
+        background: #f0f0f0;
+    }
+    
+    /* 响应式设计 */
+    @media (max-width: 1300px) {
+        nav {
+            left: 20px; /* 在小屏幕上保持固定距离 */
+        }
+    }
+    
+    @media (max-width: 768px) {
+        nav {
+            position: static;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+    }
+  </style>
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="wiki">Wiki</h1>
+<h2 id="快速入门步骤">快速入门步骤</h2>
+<h3 id="安装-chatdev：">1. 安装 <code>ChatDev</code>：</h3>
+<ul>
+<li>访问<a href="https://github.com/OpenBMB/ChatDev/blob/main/README.md#%EF%B8%8F-quickstart">快速入门部分</a>获取安装说明。</li>
+</ul>
+<h3 id="使用一个命令开始构建软件：">2. 使用一个命令开始构建软件：</h3>
+<ul>
+<li>
+<p><strong>构建您的软件：</strong> 使用以下命令启动软件构建，<br>
+将 <code>[description_of_your_idea]</code> 替换为您的想法描述，将 <code>[project_name]</code> 替换为项目  名称：</p>
+<pre><code>python3 run.py --task "[description_of_your_idea]" --name "[project_name]" 
+</code></pre>
+</li>
+<li>
+<p>这是 <code>run.py</code> 的完整参数列表：</p>
+<pre class=" language-commandline"><code class="prism  language-commandline">usage: run.py [-h] [--config CONFIG] [--org ORG] [--task TASK] [--name NAME] [--model MODEL] 
+
+argparse 
+
+可选参数： 
+   -h, --help 显示帮助信息并退出 
+   --config CONFIG 配置名称，用于加载 CompanyConfig/ 下的配置；请参阅下方的 CompanyConfig 部分 
+   --org ORG 组织名称，您的软件将在 WareHouse/name_org_timestamp 中生成 
+   --task TASK 您的想法提示 
+   --name NAME 软件名称，您的软件将在 WareHouse/name_org_timestamp 中生成 
+   --model MODEL GPT 模型，选择 {'GPT_3_5_TURBO','GPT_4','GPT_4_32K'} 
+</code></pre>
+</li>
+</ul>
+<h3 id="检查您的软件">3. 检查您的软件</h3>
+<ul>
+<li>生成的软件位于 <code>WareHouse/NAME_ORG_timestamp</code>，包括：
+<ul>
+<li>该软件的所有文件和手册</li>
+<li>制作该软件的公司的配置文件，包括三个配置 JSON 文件</li>
+<li>软件构建过程的完整日志</li>
+<li>制作该软件的提示</li>
+</ul>
+</li>
+<li>例如，一个待办事项软件位于 <code>/WareHouse/todo_THUNLP_20230822165503</code>，结构如下：<pre><code>.
+├── 20230822165503.log # 日志文件 
+├── ChatChainConfig.json # 配置 
+├── PhaseConfig.json # 配置 
+├── RoleConfig.json # 配置 
+├── todo.prompt # 用户查询提示 
+├── meta.txt # 软件构建元信息
+├── main.py # 生成的软件文件 
+├── manual.md # 生成的软件文件
+├── todo_app.py # 生成的软件文件 
+├── task.py # 生成的软件文件 
+└── requirements.txt # 生成的软件文件
+</code></pre>
+</li>
+<li>通常情况下，您只需要安装依赖项并运行 <code>main.py</code> 即可使用您的软件：<pre class=" language-commandline"><code class="prism  language-commandline">cd WareHouse/project_name_DefaultOrganization_timestamp 
+pip3 install -r requirements.txt 
+python3 main.py 
+</code></pre>
+</li>
+</ul>
+<h2 id="可视化器">可视化器</h2>
+<ul>
+<li>您可以启动一个 Flask 应用来获得可视化器，这是一个本地 Web 演示，用于实时查看日志、重播日志和 ChatChain。</li>
+<li>实时日志和重播日志之间的区别在于前者主要用于调试，它可以在软件生成过程中实时打印代理对话信息、环境变化和许多附加系统信息，如文件变化和 Git 信息。后者用于重播生成的日志，仅打印代理对话信息。</li>
+<li>只需运行：</li>
+</ul>
+<pre><code>python3 visualizer/app.py 
+</code></pre>
+<p>然后通过 <code>python3 run.py</code> 开始构建软件，并访问 <a href="http://127.0.0.1:8000/">可视化器网站</a> 查看实时日志可视化版本，例如：</p>
+<p><img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/demo.png" alt="demo"></p>
+<ul>
+<li>您还可以在页面上访问 <a href="http://127.0.0.1:8000/static/chain_visualizer.html">ChatChain 可视化器</a>，<br>
+上传任何 <code>CompanyConfig/</code> 下的 <code>ChatChainConfig.json</code> 文件以获得此链的可视化，例如：</li>
+</ul>
+<p><img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/chatchain_vis.png" alt="ChatChain Visualizer"></p>
+<ul>
+<li>您还可以访问 <a href="http://127.0.0.1:8000/static/replay.html">聊天回放页面</a> 以重播软件文件夹中的日志文件
+<ul>
+<li>点击"文件上传"按钮上传日志，然后点击"回放"</li>
+<li>回放仅显示代理之间的自然语言对话，不会包含调试日志。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/replay.gif" alt="Replay"></p>
+<h2 id="docker-启动">Docker 启动</h2>
+<ul>
+<li>您可以使用 Docker 来快速且安全地使用 ChatDev。由于 ChatDev 经常创建带有 GUI 的软件并在测试阶段执行它，因此需要一些额外的步骤来允许在 Docker 中执行 GUI 程序。</li>
+</ul>
+<h3 id="安装-docker">安装 Docker</h3>
+<ul>
+<li>请参考 <a href="https://www.docker.com/get-started/">Docker 官方网站</a>进行 Docker 安装。</li>
+</ul>
+<h3 id="准备主机与-docker-之间的-gui-连接">准备主机与 Docker 之间的 GUI 连接</h3>
+<ul>
+<li>以 macOS 为例，
+<ul>
+<li>安装 Socat 和 xquartz，安装 xquartz 后可能需要重启计算机</li>
+</ul>
+<pre class=" language-commandline"><code class="prism  language-commandline">brew install socat xquartz 
+</code></pre>
+<ul>
+<li>打开 Xquartz 并进入设置，允许来自网络客户端的连接<br>
+<img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/xquartz.jpg" alt="xquartz"></li>
+<li>在主机计算机上运行以下命令并保持其运行。</li>
+</ul>
+<pre class=" language-commandline"><code class="prism  language-commandline">socat TCP-LISTEN:6000,reuseaddr,fork UNIX-CLIENT:\"$DISPLAY\" 
+</code></pre>
+<ul>
+<li>在主机计算机上运行以下命令以检查您的 IP（inet 地址）。</li>
+</ul>
+<pre class=" language-commandline"><code class="prism  language-commandline">ifconfig en0 
+</code></pre>
+</li>
+</ul>
+<h3 id="构建-docker-镜像">构建 Docker 镜像</h3>
+<ul>
+<li>在 ChatDev 文件夹下运行<pre class=" language-commandline"><code class="prism  language-commandline"> docker build -t chatdev:latest . 
+</code></pre>
+它将生成一个名为 chatdev 的 400MB+ Docker 镜像。</li>
+</ul>
+<h3 id="运行-docker">运行 Docker</h3>
+<ul>
+<li>运行以下命令创建并进入容器<pre class=" language-commandline"><code class="prism  language-commandline"> docker run -it -p 8000:8000 -e OPENAI_API_KEY=YOUR_OPENAI_KEY -e DISPLAY=YOUR_IP:0 chatdev:latest 
+</code></pre>
+⚠️ 您需要将 <code>YOUR_OPENAI_KEY</code> 替换为您的密钥，并将 <code>YOUR_IP</code> 替换为您的 inet 地址。</li>
+<li>然后您可以运行 <code>python3 run.py</code> 使用 ChatDev。</li>
+<li>您可以先运行 <code>python3 visualizer/app.py &amp;</code> 启动后台程序，以便使用带有 WebUI 的在线日志。</li>
+</ul>
+<h3 id="将生成的软件从-docker-复制出来">将生成的软件从 Docker 复制出来</h3>
+<ul>
+<li>运行<pre class=" language-commandline"><code class="prism  language-commandline">docker cp container_id:/path/in/container /path/on/host 
+</code></pre>
+</li>
+</ul>
+<h3 id="官方-docker-镜像">官方 Docker 镜像</h3>
+<ul>
+<li>正在准备中</li>
+</ul>
+<h2 id="体验式协同学习指南">体验式协同学习指南</h2>
+<h3 id="协同跟踪">协同跟踪</h3>
+<ul>
+<li><strong>开始协同跟踪</strong>：使用以下命令启动软件构建，将 <code>[description_of_your_idea]</code> 替换为任务描述，将 <code>[project_name]</code> 替换为项目名称。这与启动 ChatDev 相同。<pre class=" language-bash"><code class="prism  language-bash">python3 run.py --task <span class="token string">"[description_of_your_idea]"</span> --name <span class="token string">"[project_name]"</span> 
+</code></pre>
+在协同跟踪阶段生成的软件已准备好作为后续步骤中代理经验池的一部分。</li>
+</ul>
+<h3 id="协同记忆">协同记忆</h3>
+<ul>
+<li>
+<p><strong>启动协同记忆</strong>：要开始处理指定目录中生成的软件，请使用以下命令运行 <code>ecl.py</code> 脚本：</p>
+<pre class=" language-bash"><code class="prism  language-bash">python3 ecl/ecl.py <span class="token string">"&lt;path&gt;"</span> <span class="token string">"[options]"</span> 
+</code></pre>
+<p><code>&lt;path&gt;</code>: 要处理的文件或目录路径。 <code>[options]</code>: 这可以设置为 <code>-d</code>。此标志表示脚本应处理给定目录中的所有文件。如果不设置此标志，脚本将处理路径中指定的文件。 经过此过程后，从软件生产中提取的经验已添加到代理的经验池 <code>ecl/memory/MemoryCards.json</code> 中。<br>
+<br>
+<strong>例如：</strong>  	如果您只想记住一个软件，可以使用：</p>
+<pre class=" language-bash"><code class="prism  language-bash">python3 ecl/ecl.py <span class="token string">"&lt;Software Path to file&gt;"</span> 
+</code></pre>
+<p>软件路径应类似于 <code>"WareHouse/project_name_DefaultOrganization_timestamp"</code>.<br>
+<br>
+如果您想记住目录中的所有文件，可以使用：</p>
+<pre class=" language-bash"><code class="prism  language-bash">python3 ecl/ecl.py <span class="token string">"&lt;Software Path to Directory&gt;"</span> -d 
+</code></pre>
+<p>软件路径应类似于 <code>"WareHouse"</code>。</p>
+</li>
+<li>
+<p><strong>内存过滤</strong>：为了获得更高质量的经验池，建议使用 <code>ecl/post_process/memory_filter.py</code> 来过滤 <code>MemoryCards.json</code>。运行 <code>memory_filter.py</code> 脚本时，您需要指定三个参数：过滤阈值、输入目录和输出目录。</p>
+<pre class=" language-bash"><code class="prism  language-bash">python3 ecl/post_process/memory_filter.py <span class="token string">"&lt;threshold&gt;"</span> <span class="token string">"&lt;directory&gt;"</span> <span class="token string">"&lt;filtered_directory&gt;"</span> 
+</code></pre>
+<ul>
+<li><code>&lt;threshold&gt;</code>: 需要在 0 到 1（不包括）之间取值。它用作按 ‘valuegain’ 过滤经验的阈值。只有 ‘valuegain’ 大于等于此阈值的经验才会被考虑。</li>
+<li><code>&lt;directory&gt;</code>: 您打算处理的记忆目录的文件路径。</li>
+<li><code>&lt;filtered_directory&gt;</code>: 您希望存储处理后数据的目录的文件路径。</li>
+</ul>
+<p><strong>例如：</strong></p>
+<pre class=" language-bash"><code class="prism  language-bash">python3 ecl/post_process/memory_filter.py 0.9 <span class="token string">"ecl/memory/MemoryCards.json"</span> <span class="token string">"ecl/memory/MemoryCards_filtered.json"</span> 
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p><strong>注意:</strong> 默认情况下，<code>MemoryCards.json</code> 是空的。您可以按照上述步骤自定义自己的代理经验池。我们还提供了我们在实验中使用的 <code>MemoryCards.json</code> 文件，您可以通过链接下载该 json 文件并将其放在 <code>ecl/memory</code> 文件夹中。这样，您可以直接进入协同推理阶段而无需重新执行协同跟踪和协同记忆步骤。</p>
+</blockquote>
+<h3 id="协同推理">协同推理</h3>
+<ul>
+<li><strong>内存使用配置</strong>：<br>
+在 <code>CompanyConfig/Default/ChatChainConfig.json</code> 文件中，<code>with_memory</code> 选项应设置为 <strong>True</strong>。 <br>
+在 <code>ecl/config.yaml</code> 文件中，您可以调整代码和文本检索的 <strong>top k</strong> 和 <strong>相似度阈值</strong> 设置。<br>
+默认情况下，<code>with_memory</code> 设置为 False，系统配置为检索前 1 个结果，代码和文本的相似度阈值均为零。</li>
+<li><strong>开始协同推理</strong>：一旦完成内存使用配置，类似于协同跟踪阶段，您可以使用以下命令启动软件构建过程。将 <code>[description_of_your_idea]</code> 替换为测试集的任务描述，将 <code>[project_name]</code> 替换为测试集的项目名称：<pre><code>python3 run.py --task "[description_of_your_idea]" --name "[project_name]" 
+</code></pre>
+在这个软件开发过程中，代理将利用经验池 (<code>MemoryCards.json</code>) 进行软件开发！</li>
+</ul>
+<p>有关此 <strong>体验式协同学习</strong> 模块的详细描述和实验结果，请参见我们的预印本论文 <a href="https://arxiv.org/abs/2312.17025%E3%80%82">https://arxiv.org/abs/2312.17025。</a></p>
+<h2 id="体验式协同进化指南">体验式协同进化指南</h2>
+<ul>
+<li>
+<p><strong>使用协同进化</strong>：使用以下命令启动经验进化，它使用 <code>ecl/ece.py</code> 消除 <code>ecl/memory/UsedMemory.json</code> 和 <code>ecl/memory/NewMemory.json</code>。然后它将这两部分经验结合起来，形成一个新的经验池 <code>ecl/memory/Evolved_directory.json</code>。</p>
+<pre class=" language-bash"><code class="prism  language-bash">python3 ecl/ece.py <span class="token string">"&lt;Path_directory&gt;"</span> <span class="token string">"&lt;UsedMemory_directory&gt;"</span> <span class="token string">"&lt;NewMemory_directory&gt;"</span> <span class="token string">"&lt;Evolved_directory&gt;"</span> 
+</code></pre>
+<p><code>&lt;Path_directory&gt;</code>: 由 <code>UsedMemory_directory</code> 生成的软件目录路径。 <br>
+<code>&lt;UsedMemory_directory&gt;</code>: 已用于生成 <code>Path_directory</code> 中软件的 UsedMemory 目录路径。 <br>
+<code>&lt;NewMemory_directory&gt;</code>: 新经验目录路径，它是通过 <code>ecl/ecl.py</code> 从 <code>Path_directory</code> 中的软件获取的。 <br>
+<code>&lt;Evolved_directory&gt;</code>: 您希望存储进化后记忆的目录路径。<br>
+<br>
+<strong>例如：</strong></p>
+<pre class=" language-bash"><code class="prism  language-bash">python3 ecl/ece.py <span class="token string">"WareHouse"</span> <span class="token string">"ecl/memory/UsedMemory.json"</span> <span class="token string">"ecl/memory/NewMemory.json"</span> <span class="token string">"ecl/memory/MemoryCards_Evolved.json"</span> 
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p><strong>注意:</strong> 软件目录和记忆目录必须对应。<code>&lt;Path_directory&gt;</code> 中的软件是使用 <code>&lt;UsedMemory_directory&gt;</code> 生成的，而 <code>&lt;NewMemory_directory&gt;</code> 是从 <code>&lt;Path_directory&gt;</code> 中的软件中获取的。这是因为当我们计算经验的频率分布时，我们需要确保软件与经验相对应，从而消除某些经验以获得具有较高检索概率的子集。</p>
+</blockquote>
+<p>有关此体验式协同进化模块的详细描述和实验结果，请参见我们的预印本论文 <a href="https://arxiv.org/abs/2405.04219%E3%80%82">https://arxiv.org/abs/2405.04219。</a></p>
+<h2 id="自定义">自定义</h2>
+<ul>
+<li>您可以在三种粒度级别上自定义您的公司：
+<ul>
+<li>自定义 ChatChain</li>
+<li>自定义 Phase</li>
+<li>自定义 Role</li>
+</ul>
+</li>
+<li>这是 ChatDev 的架构概述图，展示了上述三个类之间的关系：</li>
+</ul>
+<p><img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/arch.png" alt="arch"></p>
+<ul>
+<li>所有与 ChatDev 相关的配置内容（如代理员工的背景提示、每个 Phase 的工作内容以及如何将 Phase 组合成 ChatChain），都称为 <strong>CompanyConfig</strong>（因为 ChatDev 像是一家虚拟的软件公司）。这些 CompanyConfigs 存在于 ChatDev 项目下的 <code>CompanyConfig/</code> 文件夹中。您可以查看这个 <a href="https://github.com/OpenBMB/ChatDev/tree/main/CompanyConfig">目录</a>。在这个目录中，您会看到不同的 CompanyConfig（如 Default、Art、Human）。一般来说，每个 CompanyConfig 将包含 3 个配置文件。
+<ol>
+<li>ChatChainConfig.json，控制 ChatDev 的整体开发过程，包括每一步是什么 Phase，每个 Phase 需要循环多少次，是否需要反思等。</li>
+<li>PhaseConfig.json，控制每个 Phase，并对应于 ChatDev 项目中的 <code>chatdev/phase.py</code> 或 <code>chatdev/composed_phase.py</code>。Python 文件实现了每个阶段的具体工作逻辑。这里的 JSON 文件包含每个阶段的配置，如背景提示、参与该阶段的员工等。</li>
+<li>RoleConfig.json 包含每个员工（代理）的配置。目前，它只包含每个员工的背景提示，即包含占位符的一段文本。</li>
+</ol>
+</li>
+<li>如果一个 CompanyConfig 不包含所有三个配置文件（如 Art 和 Human），这意味着缺少的配置文件将根据 Default 设置。当前提供的官方 CompanyConfig 包括：
+<ol>
+<li>Default，默认配置</li>
+<li>Art，允许 ChatDev 根据需求创建图像文件，自动生成图像描述提示并调用 OpenAI API 生成图像</li>
+<li>Human，允许人类用户参与 ChatDev 的代码审查过程</li>
+</ol>
+</li>
+</ul>
+<h3 id="自定义-chatchain">自定义 ChatChain</h3>
+<ul>
+<li>查看 <code>CompanyConfig/Default/ChatChainConfig.json</code></li>
+<li>您可以通过修改 JSON 文件，轻松地从所有 Phase（来自 <code>chatdev/phase.py</code> 或 <code>chatdev/composed_phase.py</code>） 中挑选和组织 Phase 来制定 ChatChain</li>
+</ul>
+<h3 id="自定义-phase">自定义 Phase</h3>
+<ul>
+<li>这是唯一需要修改代码的部分，但它带来了很大的灵活性。</li>
+<li>您只需：
+<ul>
+<li>实现继承自 <code>Phase</code> 类的 Phase 类（最简单的情况下，只需修改一个函数）</li>
+<li>在 <code>PhaseConfig.json</code> 中配置此 Phase，包括编写 Phase 提示和分配角色</li>
+</ul>
+</li>
+<li>自定义 SimplePhase
+<ul>
+<li>查看 <code>CompanyConfig/Default/PhaseConfig.json</code> 获取配置，查看 <code>chatdev/phase.py</code> 实现自己的 Phase</li>
+<li>每个 Phase 包含三个步骤：
+<ul>
+<li>从整个 ChatChain 环境中生成 Phase 环境</li>
+<li>使用 Phase 环境控制 Phase 提示并执行此 Phase 中的角色聊天（通常不需要修改，已在 Phase 类中定义）</li>
+</ul>
+</li>
+<li>从聊天中得出研讨会结论，并用它更新整个 ChatChain 环境</li>
+<li>以下是选择软件编程语言的一个简单 Phase 示例：
+<ul>
+<li>
+<p>生成 Phase 环境：我们从 ChatChain 环境中选择任务、模态和创意点子</p>
+</li>
+<li>
+<p>执行 Phase：不需要实现，已在 Phase 类中定义</p>
+</li>
+<li>
+<p>更新 ChatChain 环境：我们得到研讨会结论（哪种语言）并更新 ChatChain 环境中的 ‘language’ 键</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">LanguageChoose</span><span class="token punctuation">(</span>Phase<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+		<span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+				<span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span> 
+	<span class="token keyword">def</span> <span class="token function">update_phase_env</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> chat_env<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+				self<span class="token punctuation">.</span>phase_env<span class="token punctuation">.</span>update<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"task"</span><span class="token punctuation">:</span> chat_env<span class="token punctuation">.</span>env_dict<span class="token punctuation">[</span><span class="token string">'task_prompt'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
+										<span class="token string">"modality"</span><span class="token punctuation">:</span> chat_env<span class="token punctuation">.</span>env_dict<span class="token punctuation">[</span><span class="token string">'modality'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> 
+										<span class="token string">"ideas"</span><span class="token punctuation">:</span> chat_env<span class="token punctuation">.</span>env_dict<span class="token punctuation">[</span><span class="token string">'ideas'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span> 
+	<span class="token keyword">def</span> <span class="token function">update_chat_env</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> chat_env<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> ChatEnv<span class="token punctuation">:</span> 
+			<span class="token keyword">if</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>seminar_conclusion<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">and</span> <span class="token string">"&lt;INFO&gt;"</span> <span class="token keyword">in</span> self<span class="token punctuation">.</span>seminar_conclusion<span class="token punctuation">:</span> 
+					chat_env<span class="token punctuation">.</span>env_dict<span class="token punctuation">[</span><span class="token string">'language'</span><span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>seminar_conclusion<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">"&lt;INFO&gt;"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+			<span class="token keyword">elif</span> <span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>seminar_conclusion<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span> 
+					chat_env<span class="token punctuation">.</span>env_dict<span class="token punctuation">[</span><span class="token string">'language'</span><span class="token punctuation">]</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>seminar_conclusion 
+			<span class="token keyword">else</span><span class="token punctuation">:</span> 
+					chat_env<span class="token punctuation">.</span>env_dict<span class="token punctuation">[</span><span class="token string">'language'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">"Python"</span> 
+			<span class="token keyword">return</span> chat_env 
+</code></pre>
+<p>该 Phase 的配置如下：</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token string">"LanguageChoose"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> 
+	<span class="token string">"assistant_role_name"</span><span class="token punctuation">:</span> <span class="token string">"Chief Technology Officer"</span><span class="token punctuation">,</span> 
+	<span class="token string">"user_role_name"</span><span class="token punctuation">:</span> <span class="token string">"Chief Executive Officer"</span><span class="token punctuation">,</span> 
+	<span class="token string">"phase_prompt"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> 
+		<span class="token string">"According to the new user's task and some creative brainstorm ideas listed below: "</span><span class="token punctuation">,</span> 
+		<span class="token string">"Task: \"{task}\"."</span><span class="token punctuation">,</span> 
+		<span class="token string">"Modality: \"{modality}\"."</span><span class="token punctuation">,</span> 
+		<span class="token string">"Ideas: \"{ideas}\"."</span><span class="token punctuation">,</span> 
+		<span class="token string">"We have decided to complete the task through an executable software implemented via a programming language. "</span><span class="token punctuation">,</span> 
+		<span class="token string">"As the {assistant_role}, to satisfy the new user's demand and make the software realizable, you should propose a concrete programming language. If python can complete this task via Python, please answer Python; otherwise, answer another programming language (e.g., Java, C++, etc,)."</span><span class="token punctuation">,</span> 
+		<span class="token string">"Note that we must ONLY discuss the target programming language and do not discuss anything else! Once we all have expressed our opinion(s) and agree with the results of the discussion unanimously, any of us must actively terminate the discussion and conclude the best programming language we have discussed without any other words or reasons, using the format: \"&lt;INFO&gt; *\" where \"*\" represents a programming language."</span>
+	<span class="token punctuation">]</span> 
+<span class="token punctuation">}</span> 
+</code></pre>
+</li>
+</ul>
+</li>
+<li>该 Phase 的配置如下：
+<ul>
+<li>
+<p>查看 <code>CompanyConfig/Default/ChatChainConfig.json</code> 获取配置并查看 <code>chatdev/composed_phase.py</code> 获取实现。</p>
+</li>
+<li>
+<p><strong>⚠️ 注意</strong> 我们目前不支持嵌套组合，因此不要在 ComposePhase 中放入 ComposePhase。</p>
+</li>
+<li>
+<p>ComposePhase 包含多个 SimplePhase，并可以循环执行。</p>
+</li>
+<li>
+<p>ComposePhase 没有 Phase JSON 文件，但在 chatchain JSON 文件中可以定义哪些 SimplePhase 属于此 ComposePhase，例如：</p>
+<pre class=" language-json"><code class="prism  language-json">	<span class="token punctuation">{</span> 
+		<span class="token string">"phase"</span><span class="token punctuation">:</span> <span class="token string">"CodeReview"</span><span class="token punctuation">,</span> 
+		<span class="token string">"phaseType"</span><span class="token punctuation">:</span> <span class="token string">"ComposedPhase"</span><span class="token punctuation">,</span> 
+		<span class="token string">"cycleNum"</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> 
+		<span class="token string">"Composition"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> 
+			<span class="token punctuation">{</span>
+				 <span class="token string">"phase"</span><span class="token punctuation">:</span> <span class="token string">"CodeReviewComment"</span><span class="token punctuation">,</span> 
+				 <span class="token string">"phaseType"</span><span class="token punctuation">:</span> <span class="token string">"SimplePhase"</span><span class="token punctuation">,</span> 
+				 <span class="token string">"max_turn_step"</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> 
+				 <span class="token string">"need_reflect"</span><span class="token punctuation">:</span> <span class="token string">"False"</span> 
+		 	<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		 	<span class="token punctuation">{</span>
+		 			<span class="token string">"phase"</span><span class="token punctuation">:</span> <span class="token string">"CodeReviewModification"</span><span class="token punctuation">,</span> 
+		 			<span class="token string">"phaseType"</span><span class="token punctuation">:</span> <span class="token string">"SimplePhase"</span><span class="token punctuation">,</span> 
+		 			<span class="token string">"max_turn_step"</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> 
+		 			<span class="token string">"need_reflect"</span><span class="token punctuation">:</span> <span class="token string">"False"</span> 
+ 			<span class="token punctuation">}</span> 
+		<span class="token punctuation">]</span> 
+	<span class="token punctuation">}</span> 
+</code></pre>
+</li>
+<li>
+<p>您还需要实现自己的 ComposePhase 类，您需要决定 Phase 环境更新和 Chat 环境更新（与 SimplePhase 相同，但针对整个 ComposePhase）以及停止循环的条件（可选）：</p>
+<pre class=" language-python"><code class="prism  language-python"><span class="token keyword">class</span> <span class="token class-name">Test</span><span class="token punctuation">(</span>ComposedPhase<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+		<span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+				<span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token operator">**</span>kwargs<span class="token punctuation">)</span> 
+
+		<span class="token keyword">def</span> <span class="token function">update_phase_env</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> chat_env<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+				self<span class="token punctuation">.</span>phase_env <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+
+		<span class="token keyword">def</span> <span class="token function">update_chat_env</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> chat_env<span class="token punctuation">)</span><span class="token punctuation">:</span>
+				<span class="token keyword">return</span> chat_env 
+
+		<span class="token keyword">def</span> <span class="token function">break_cycle</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> phase_env<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> <span class="token builtin">bool</span><span class="token punctuation">:</span> 
+				<span class="token keyword">if</span> <span class="token operator">not</span> phase_env<span class="token punctuation">[</span><span class="token string">'exist_bugs_flag'</span><span class="token punctuation">]</span><span class="token punctuation">:</span> 
+						log_visualize<span class="token punctuation">(</span>f<span class="token string">"**[Test Info]**\n\nAI User (Software Test Engineer):\nTest Pass!\n"</span><span class="token punctuation">)</span> 
+						<span class="token keyword">return</span> <span class="token boolean">True</span> 
+				<span class="token keyword">else</span><span class="token punctuation">:</span> 
+						<span class="token keyword">return</span> <span class="token boolean">False</span> 
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="自定义-role">自定义 Role</h3>
+<ul>
+<li>查看 <code>CompanyConfig/Default/RoleConfig.json</code></li>
+<li>您可以使用占位符使用 Phase 环境，与 PhaseConfig.json 相同</li>
+<li><strong>⚠️ 注意</strong> 您需要在自己的 <code>RoleConfig.json</code> 中至少保留 “Chief Executive Officer” 和 “Counselor” 以使 Reflection 正常工作。</li>
+</ul>
+<h2 id="chatchain-参数">ChatChain 参数</h2>
+<ul>
+<li><em>clear_structure</em>: 是否清除 WareHouse 中的非软件文件和生成软件路径中的缓存文件。</li>
+<li><em>gui_design</em>: 鼓励 ChatDev 生成带有 GUI 的软件。</li>
+<li><em>git_management</em>: 是否使用 git 管理生成软件的创建和更改。</li>
+<li><em>incremental_develop</em>: 是否在现有项目上使用增量开发。</li>
+<li><em>self_improve</em>: 用户输入提示的自我改进标志。这是一种特殊的聊天，LLM 扮演提示工程师的角色来改进用户输入的提示。<strong>⚠️ 注意</strong> 模型生成的提示包含不确定性，可能会偏离原始提示中包含的要求意义。</li>
+<li><em>background_prompt</em>: 每次询问 LLM 时都会添加的背景提示。</li>
+<li><em>with_memory</em>: 是否利用代理的经验池。实际的经验池位于 <code>ecl/memory/MemoryCards.json</code> 中。</li>
+<li>SimplePhase 参数：
+<ul>
+<li><em>max_turn_step</em>: 最大聊天轮数。您可以增加 max_turn_step 以提高性能，但这将花费更多时间完成该阶段。</li>
+<li><em>need_reflect</em>: 反思标志。反思是在阶段之后自动执行的特殊阶段。它会在 CEO 和顾问之间开始聊天，以提炼阶段聊天的结论。</li>
+</ul>
+</li>
+<li>ComposedPhase 参数：
+<ul>
+<li><em>cycleNum</em>: 执行此 ComposedPhase 中 SimplePhase 的循环次数。</li>
+</ul>
+</li>
+</ul>
+<h2 id="项目结构">项目结构</h2>
+<pre class=" language-commandline"><code class="prism  language-commandline"> ├── CompanyConfig # ChatDev 的配置文件，包括 ChatChain、Phase 和 Role 配置 JSON 文件。 
+ ├── WareHouse # 生成软件的文件夹 
+ ├── camel # Camel 角色扮演组件 
+ ├── chatdev # ChatDev 核心代码 
+ ├── ecl # 体验式协同学习模块 
+ ├── misc # 示例和演示资源 
+ ├── visualizer # 可视化器文件夹 
+ ├── run.py # ChatDev 入口 
+ ├── requirements.txt 
+ ├── README.md 
+ └── wiki.md 
+</code></pre>
+<h2 id="companyconfig">CompanyConfig</h2>
+<h3 id="default">Default</h3>
+<p><img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/ChatChain_Visualization_Default.png" alt="demo"></p>
+<ul>
+<li>如 Default 设置的 ChatChain 可视化所示，ChatDev 将按以下顺序生成软件：
+<ul>
+<li>需求分析：决定软件的模态</li>
+<li>语言选择：决定编程语言</li>
+<li>编码：编写代码</li>
+<li>CodeCompleteAll：完成缺失的功能/类</li>
+<li>CodeReview：审查并修改代码</li>
+<li>测试：运行软件并根据测试报告修改代码</li>
+<li>EnvironmentDoc：编写环境文档</li>
+<li>手册：编写手册</li>
+</ul>
+</li>
+<li>您可以使用默认设置通过 <code>python3 run.py --config "Default"</code> 运行。</li>
+</ul>
+<h3 id="art">Art</h3>
+<p><img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/ChatChain_Visualization_Art.png" alt="demo"></p>
+<ul>
+<li>与 Default 相比，Art 设置在 CodeCompleteAll 之前添加了一个名为 Art 的阶段</li>
+<li>Art 阶段将首先讨论图像资产的名称和描述，然后使用 <code>openai.Image.create</code> 根据描述生成图像。</li>
+<li>您可以使用默认设置通过 <code>python3 run.py --config "Art"</code> 或忽略 config 参数运行。</li>
+</ul>
+<h3 id="人机交互">人机交互</h3>
+<p><img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/ChatChain_Visualization_Human.png" alt="demo"></p>
+<ul>
+<li>与 Default 相比，在 <em><strong>人机交互</strong></em> 模式下，您可以在代码审查阶段之后充当审查员，并要求程序员代理根据您的评论修改代码。</li>
+<li>它在 dCodeReview 阶段之后添加了一个名为 HumanAgentInteraction 的阶段。</li>
+<li>您可以使用 <em><strong>人机交互</strong></em> 设置通过 <code>python3 run.py --config "Human"</code> 运行。</li>
+<li>当 chatdev 执行到此阶段时，在命令界面您会看到提示要求输入。</li>
+<li>您可以在 <code>WareHouse/</code> 中运行软件，查看是否满足您的需求。然后您可以在命令界面输入任何内容（修复 bug 或新功能），然后按 Enter：<br>
+<img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/ChatChain_Visualization_Human.png" alt="demo"></li>
+<li>例如
+<ul>
+<li>我们首先使用任务 “设计一个五子棋游戏” 运行 ChatDev</li>
+<li>然后我们在 <em>人机交互</em> 阶段输入 “请添加一个重新开始按钮” 添加第一个功能</li>
+<li>在第二个 <em>人机交互</em> 循环中，我们通过输入 “请添加一个显示当前状态栏，显示谁的回合” 添加了另一个功能。</li>
+<li>最后，我们通过输入 “结束” 提前退出此模式。</li>
+<li>以下是所有三个版本。</li>
+</ul>
+</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th><img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/Human_v1.png" alt=""></th>
+<th><img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/Human_v2.png" alt=""></th>
+<th><img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/Human_v3.png" alt=""></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table><h3 id="git-模式">Git 模式</h3>
+<ul>
+<li>只需在 <code>ChatChainConfig.json</code> 中将 <code>"git_management"</code> 设置为 <code>"True"</code> 即可开启 Git 模式，在这种模式下，ChatDev 将把生成的软件文件夹变成一个 git 仓库，并自动提交所有更改。</li>
+<li>对生成软件代码的每次更改都会创建一个提交，包括：
+<ul>
+<li>在 <code>Coding</code> 阶段完成后创建初始提交，提交消息为 <code>Finish Coding</code>。</li>
+<li>完成 <code>ArtIntegration</code> 阶段，提交消息为 <code>Finish Art Integration</code>。</li>
+<li>完成 <code>CodeComplete</code> 阶段，提交消息为 <code>Code Complete #1/2/3 Finished</code>（如果 CodeComplete 执行了三次循环）。</li>
+<li>完成 <code>CodeReviewModification</code> 阶段，提交消息为 <code>Review #1/2/3 Finished</code>（如果 CodeReviewModification 执行了三次循环）。</li>
+<li>完成 <code>CodeReviewHuman</code> 阶段，提交消息为 <code>Human Review #1/2/3 Finished</code>（如果 CodeReviewHuman 执行了三次循环）。</li>
+<li>完成 <code>TestModification</code> 阶段，提交消息为 <code>Test #1/2/3 Finished</code>（如果 TestModification 执行了三次循环）。</li>
+<li>所有阶段完成，提交消息为 <code>Final Version</code>。</li>
+</ul>
+</li>
+<li>在终端和在线日志 UI 上，您可以看到过程结束时的 git 摘要。</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th><img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/git_summary_terminal.png" alt=""></th>
+<th><img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/git_summary_onlinelog.png" alt=""></th>
+</tr>
+</thead>
+<tbody></tbody>
+</table><ul>
+<li>您也可以在日志文件中搜索 <code>git Information</code> 以查看何时进行了提交。</li>
+<li>⚠️ 关于 Git 模式的几点注意事项：
+<ul>
+<li>ChatDev 是一个 git 项目，我们需要在生成的软件文件夹中创建另一个 git 项目，所以我们使用 <code>git submodule</code> 来实现这个“git over git”功能。将创建一个 <code>.gitmodule</code> 文件。</li>
+<li>在软件文件夹下，您可以像正常 git 项目一样添加/提交/push/checkout 软件项目，而不会修改 ChatDev 的 git 历史记录。</li>
+<li>在 ChatDev 文件夹下，新的软件作为一个完整的文件夹被添加到 ChatDev 中。</li>
+<li>生成的日志文件不会被添加到软件 git 项目中，因为日志在最终提交后关闭并移动到软件文件夹中。我们必须这样做，因为日志应该记录所有的 git 提交，包括最后一条。所以在日志最终确定之前必须完成 git 操作。您总是会在软件文件夹中看到一个日志文件被添加和提交，例如：<br>
+<img src="https://github.com/OpenBMB/ChatDev/raw/main/misc/the_log_left.png" alt="img.png"></li>
+<li>当您在 ChatDev 项目下执行 <code>git add .</code> 时，会出现类似以下信息（以 Gomoku 为例）：<pre class=" language-commandline"><code class="prism  language-commandline">Changes to be committed: 
+		(use "git restore --staged &lt;file&gt;..." to unstage) 
+				new file: .gitmodules 
+				new file: WareHouse/Gomoku_GitMode_20231025184031 
+
+Changes not staged for commit: 
+		(use "git add &lt;file&gt;..." to update what will be committed) 
+		(use "git restore &lt;file&gt;..." to discard changes in working directory) 
+		(commit or discard the untracked or modified content in submodules) 
+				modified: WareHouse/Gomoku_GitMode_20231025184031 (untracked content) 
+</code></pre>
+如果您在软件文件夹下添加并提交了软件日志文件，则不会有 <code>Changes not staged for commit:</code></li>
+<li>某些阶段执行可能不会更改代码，因此不会留下提交。例如，软件测试没有问题且没有修改，所以测试阶段不会留下提交。</li>
+</ul>
+</li>
+</ul>
+</div>
+<nav>
+  <ul>
+    <li><a href="#wiki">Wiki</a></li>
+    <li><a href="#快速入门步骤">快速入门步骤</a></li>
+    <li><a href="#可视化器">可视化器</a></li>
+    <li><a href="#docker-启动">Docker 启动</a></li>
+    <li><a href="#体验式协同学习指南">体验式协同学习指南</a></li>
+    <li><a href="#自定义">自定义</a></li>
+  </ul>
+</nav>
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+</body>
+
+</html>
